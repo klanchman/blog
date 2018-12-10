@@ -11,7 +11,7 @@ A little while back I automated my anime and manga habit using Plex, Flexget, an
 <div style="background-color: #f0f0f0; padding: 16px; margin-bottom: 1.7em;">
     This story is part of a series on migrating from macOS Server to Ubuntu Server.
     <br /><br />
-    You can find all of the other stories in the series <a href="/trashing-macos-server">here</a>.
+    You can find all of the other stories in the series <a href="/series/trashing-macos-server">here</a>.
 </div>
 
 ## A Quick Note
