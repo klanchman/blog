@@ -2,7 +2,7 @@
 title = "Doing More With My Domain: Blogging"
 date = 2014-09-11T19:22:00Z
 tags = ["meta"]
-slug = "doing-more-with-my-domain-blogging"
+aliases = ["/doing-more-with-my-domain-blogging"]
 +++
 
 I promised myself I wouldn't say I put a ["blag" on my "wobsite"](http://xkcd.com/148/), and yet I just can't resist.

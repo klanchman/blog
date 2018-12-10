@@ -2,7 +2,7 @@
 title = "Using Ghost for Blogging"
 date = 2018-03-18T23:39:00Z
 tags = ["meta", "tech", "homelab"]
-slug = "using-ghost-for-blogging"
+aliases = ["/using-ghost-for-blogging"]
 +++
 
 I decided to try out Ghost for blogging. I think I like it.

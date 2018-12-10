@@ -2,7 +2,7 @@
 title = "Apple Hate"
 date = 2015-03-11T23:03:00Z
 tags = ["rant", "apple"]
-slug = "apple-hate"
+aliases = ["/apple-hate"]
 +++
 
 It's amazing how much hate Apple gets when they release a new product.

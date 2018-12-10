@@ -7,6 +7,9 @@ pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 pygmentsStyle = "solarized-light"
 
+[permalinks]
+  post = "/post/:title"
+
 [params]
   subtitle = "Rambling about tech and weeb stuff"
   favicon = "img/icon.png"

@@ -3,7 +3,7 @@ title = "Hackintosh Home Server: Part 1"
 date = 2014-09-16T14:41:00Z
 tags = ["homelab", "apple", "tech"]
 series = "Hackintosh Home Server"
-slug = "hackintosh-home-server-part-1"
+aliases = ["/hackintosh-home-server-part-1"]
 +++
 
 I've been using Windows 8 on the server for a while now. It worked fine for what we needed. I didn't care for the setup much, but I didn't need to mess with it much either, so I got along fine with it overall.

@@ -3,7 +3,7 @@ title = "Hackintosh Home Server: Part 2"
 date = 2014-10-13T02:53:00Z
 tags = ["homelab", "apple", "tech"]
 series = "Hackintosh Home Server"
-slug = "hackintosh-home-server-part-2"
+aliases = ["/hackintosh-home-server-part-2"]
 +++
 
 (Oh wow, it's already been nearly a month since my last post? So I've been busy. Sue me.)

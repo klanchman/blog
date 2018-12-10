@@ -3,7 +3,7 @@ title = "Trashing macOS Server: Part 3 - Plex, Transmission, and Flexget"
 date = 2018-12-09T15:09:00-05:00
 tags = ["homelab", "apple", "tech"]
 series = "Trashing macOS Server"
-slug = "trashing-macos-server-part-3-plex-transmission-and-flexget"
+aliases = ["/trashing-macos-server-part-3-plex-transmission-and-flexget"]
 +++
 
 A little while back I automated my anime and manga habit using Plex, Flexget, and Transmission on my macOS server. Configuring these services on Ubuntu was plenty easy, but there were a couple of differences compared to the macOS server.

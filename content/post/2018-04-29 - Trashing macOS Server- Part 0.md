@@ -3,7 +3,7 @@ title = "Trashing macOS Server: Part 0 - Setup"
 date = 2018-04-29T12:45:00-05:00
 tags = ["homelab", "apple", "tech"]
 series = "Trashing macOS Server"
-slug = "trashing-macos-server-part-0-setup"
+aliases = ["/trashing-macos-server-part-0-setup"]
 +++
 
 Before I could replace macOS Server, I had to prepare some kind of virtual machine to house all the new stuff. Since the rest of my homelab VMs are running Ubuntu Server 16.04, that's what I chose to use for the new server, Kestrel.

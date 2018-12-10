@@ -3,7 +3,7 @@ title = "Trashing macOS Server: Part 2 - Time Machine"
 date = 2018-08-26T14:34:00-05:00
 tags = ["homelab", "apple", "tech"]
 series = "Trashing macOS Server"
-slug = "trashing-macos-server-part-2-time-machine"
+aliases = ["/trashing-macos-server-part-2-time-machine"]
 +++
 
 I'm a big fan of having my computers make Time Machine backups to my server—it's more convenient than fumbling around with an external drive. Getting Time Machine to back up to a non-Apple machine requires a little bit of work, though.

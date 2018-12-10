@@ -3,7 +3,7 @@ title = "Trashing macOS Server: Introduction"
 date = 2018-04-15T15:00:00-05:00
 tags = ["homelab", "apple", "tech"]
 series = "Trashing macOS Server"
-slug = "trashing-macos-server-introduction"
+aliases = ["/trashing-macos-server-introduction"]
 +++
 
 A few years back I wanted a home server that would mesh well with my other Apple devices. I thought it'd be a good idea to use macOS Server. For the most part, it went well, but a few recent developments scared me into finding an alternative.
