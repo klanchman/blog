@@ -1,0 +1,33 @@
+baseURL = "https://blog.kylelanchman.com"
+languageCode = "en-us"
+title = "Kyle Lanchman"
+theme = "beautifulhugo"
+
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+pygmentsStyle = "solarized-light"
+
+[params]
+  subtitle = "Rambling about tech and weeb stuff"
+  favicon = "img/icon.png"
+  wordCount = true
+  readingTime = true
+  showRelatedPosts = true
+
+[author]
+  name = "Kyle Lanchman"
+  website = "https://kylelanchman.com"
+  email = "me@kylelanchman.com"
+  github = "klanchman"
+  twitter = "klanchman"
+  linkedin = "kylelanchman"
+
+[taxonomies]
+  # category = "categories"
+  series = "series"
+  tag = "tags"
+
+[[menu.main]]
+  name = "Tags"
+  url = "tags"
+  weight = 3
