@@ -8,7 +8,7 @@ pygmentsCodeFencesGuessSyntax = true
 pygmentsStyle = "solarized-light"
 
 [permalinks]
-  post = "/post/:title"
+  post = "/:title"
 
 [params]
   subtitle = "Rambling about tech and weeb stuff"

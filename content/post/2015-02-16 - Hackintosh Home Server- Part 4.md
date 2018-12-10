@@ -3,7 +3,6 @@ title = "Hackintosh Home Server: Part 4"
 date = 2015-02-16T03:05:00Z
 tags = ["homelab", "apple", "tech"]
 series = "Hackintosh Home Server"
-aliases = ["/hackintosh-home-server-part-4"]
 +++
 
 I left this off where I had a server with no OS, and a backup that was totally useless.

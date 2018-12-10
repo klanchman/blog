@@ -2,7 +2,6 @@
 title = "Rant: Mobile Payments"
 date = 2014-10-28T03:17:00Z
 tags = ["rant"]
-aliases = ["/rant-mobile-payments"]
 +++
 
 It's time for a rant.

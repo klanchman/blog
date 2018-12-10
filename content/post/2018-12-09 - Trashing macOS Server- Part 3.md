@@ -3,7 +3,6 @@ title = "Trashing macOS Server: Part 3 - Plex, Transmission, and Flexget"
 date = 2018-12-09T15:09:00-05:00
 tags = ["homelab", "apple", "tech"]
 series = "Trashing macOS Server"
-aliases = ["/trashing-macos-server-part-3-plex-transmission-and-flexget"]
 +++
 
 A little while back I automated my anime and manga habit using Plex, Flexget, and Transmission on my macOS server. Configuring these services on Ubuntu was plenty easy, but there were a couple of differences compared to the macOS server.
@@ -285,6 +284,8 @@ sudo systemctl start flexget.timer
 
 You now have an automated way to get your favorite media and load it into Plex. But now we have a bit of an issue. We have all kinds of important data on our server, but no nice way to keep it backed up. On a macOS server, you'd probably just use Time Machine.
 
-I use Proxmox to keep the base VM^[I only include the boot drive in the backup because my Proxmox backup disk is small! Besides, I found a way to do hourly backups of my shared files, so why include them in the Proxmox backup anyway?] backed up, but I only do that once a week. For all the shared files, I wanted to have hourly backups like Time Machine.
+I use Proxmox to keep the base VM[^1] backed up, but I only do that once a week. For all the shared files, I wanted to have hourly backups like Time Machine.
 
 Next time, I'll talk about what I did to solve this problem!
+
+[^1]: I only include the boot drive in the backup because my Proxmox backup disk is small! Besides, I found a way to do hourly backups of my shared files, so why include them in the Proxmox backup anyway?

@@ -3,7 +3,6 @@ title = "Hackintosh Home Server: Part 3"
 date = 2015-01-16T16:04:00Z
 tags = ["homelab", "apple", "tech"]
 series = "Hackintosh Home Server"
-aliases = ["/hackintosh-home-server-part-3"]
 +++
 
 I mentioned a few months ago that I was hoping the home server would be able to be upgraded to Yosemite when the time came. Over my winter break, I decided to give it a shot.

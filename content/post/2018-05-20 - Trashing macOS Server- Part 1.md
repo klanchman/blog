@@ -3,7 +3,6 @@ title = "Trashing macOS Server: Part 1 - File Server"
 date = 2018-05-20T22:10:00-05:00
 tags = ["homelab", "apple", "tech"]
 series = "Trashing macOS Server"
-aliases = ["/trashing-macos-server-part-1-file-server"]
 +++
 
 One of the most important things to have on a home server is some kind of file server. I chose to replace macOS Server's file server with Samba on Ubuntu. This ended up being one of the more difficult things to get correct.
