@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+https://wonderful-knuth-c3409a.netlify.com/* https://blog.kylelanchman.com/:splat 301!
