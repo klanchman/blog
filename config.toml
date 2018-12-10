@@ -12,7 +12,8 @@ pygmentsStyle = "solarized-light"
 
 [params]
   subtitle = "Rambling about tech and weeb stuff"
-  favicon = "img/icon.png"
+  favicon = "/img/icon.png"
+  logo = "/img/logo.png"
   wordCount = true
   readingTime = true
   showRelatedPosts = true
