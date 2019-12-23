@@ -7,11 +7,11 @@ series = "Trashing macOS Server"
 
 Before I could replace macOS Server, I had to prepare some kind of virtual machine to house all the new stuff. Since the rest of my homelab VMs are running Ubuntu Server 16.04, that's what I chose to use for the new server, Kestrel.
 
-<div style="background-color: #f0f0f0; padding: 16px; margin-bottom: 1.7em;">
-    This story is part of a series on migrating from macOS Server to Ubuntu Server.
-    <br /><br />
-    You can find all of the other stories in the series <a href="/series/trashing-macos-server">here</a>.
-</div>
+{{% box %}}
+This story is part of a series on migrating from macOS Server to Ubuntu Server.
+
+You can find all of the other stories in the series [here](/series/trashing-macos-server).
+{{% /box %}}
 
 ## Installing Ubuntu Server 16.04
 

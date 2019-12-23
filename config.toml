@@ -7,6 +7,9 @@ pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 pygmentsStyle = "solarized-light"
 
+[markup.goldmark.renderer]
+unsafe = true
+
 [permalinks]
   post = "/:title"
 

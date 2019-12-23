@@ -7,11 +7,11 @@ series = "Trashing macOS Server"
 
 I mentioned in my [post about Time Machine](/trashing-macos-server-part-2-time-machine) that Samba 4.8 supports Time Machine, but that it wasn't available on Ubuntu 16.04, so I went with Time Machine over AFP using Netatalk. After months of backing up over AFP, I started having some problems with backups becoming corrupt.
 
-<div style="background-color: #f0f0f0; padding: 16px; margin-bottom: 1.7em;">
-    This story is part of a series on migrating from macOS Server to Ubuntu Server.
-    <br /><br />
-    You can find all of the other stories in the series <a href="/series/trashing-macos-server">here</a>.
-</div>
+{{% box %}}
+This story is part of a series on migrating from macOS Server to Ubuntu Server.
+
+You can find all of the other stories in the series [here](/series/trashing-macos-server).
+{{% /box %}}
 
 ## The Problem
 

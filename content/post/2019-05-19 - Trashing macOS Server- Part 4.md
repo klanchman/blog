@@ -7,11 +7,11 @@ series = "Trashing macOS Server"
 
 While I was using macOS Server, keeping files on the server itself backed up was easy with Time Machine. I wanted a similar solution for my Ubuntu server: frequent incremental backups that "just work".
 
-<div style="background-color: #f0f0f0; padding: 16px; margin-bottom: 1.7em;">
-    This story is part of a series on migrating from macOS Server to Ubuntu Server.
-    <br /><br />
-    You can find all of the other stories in the series <a href="/series/trashing-macos-server">here</a>.
-</div>
+{{% box %}}
+This story is part of a series on migrating from macOS Server to Ubuntu Server.
+
+You can find all of the other stories in the series [here](/series/trashing-macos-server).
+{{% /box %}}
 
 ## Finding a Tool
 

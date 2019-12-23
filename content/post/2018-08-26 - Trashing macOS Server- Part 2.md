@@ -7,11 +7,11 @@ series = "Trashing macOS Server"
 
 I'm a big fan of having my computers make Time Machine backups to my server—it's more convenient than fumbling around with an external drive. Getting Time Machine to back up to a non-Apple machine requires a little bit of work, though.
 
-<div style="background-color: #f0f0f0; padding: 16px; margin-bottom: 1.7em;">
-    This story is part of a series on migrating from macOS Server to Ubuntu Server.
-    <br /><br />
-    You can find all of the other stories in the series <a href="/series/trashing-macos-server">here</a>.
-</div>
+{{% box %}}
+This story is part of a series on migrating from macOS Server to Ubuntu Server.
+
+You can find all of the other stories in the series [here](/series/trashing-macos-server).
+{{% /box %}}
 
 ## A Few Notes
 

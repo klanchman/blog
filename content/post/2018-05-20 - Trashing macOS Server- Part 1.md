@@ -7,11 +7,11 @@ series = "Trashing macOS Server"
 
 One of the most important things to have on a home server is some kind of file server. I chose to replace macOS Server's file server with Samba on Ubuntu. This ended up being one of the more difficult things to get correct.
 
-<div style="background-color: #f0f0f0; padding: 16px; margin-bottom: 1.7em;">
-    This story is part of a series on migrating from macOS Server to Ubuntu Server.
-    <br /><br />
-    You can find all of the other stories in the series <a href="/series/trashing-macos-server">here</a>.
-</div>
+{{% box %}}
+This story is part of a series on migrating from macOS Server to Ubuntu Server.
+
+You can find all of the other stories in the series [here](/series/trashing-macos-server).
+{{% /box %}}
 
 ## The Goal
 

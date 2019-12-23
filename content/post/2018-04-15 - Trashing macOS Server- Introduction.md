@@ -8,11 +8,11 @@ image = "/img/post-images/trashing-macos-server.png"
 
 A few years back I wanted a home server that would mesh well with my other Apple devices. I thought it'd be a good idea to use macOS Server. For the most part, it went well, but a few recent developments scared me into finding an alternative.
 
-<div style="background-color: #f0f0f0; padding: 16px; margin-bottom: 1.7em;">
-    This story is part of a series on migrating from macOS Server to Ubuntu Server.
-    <br /><br />
-    You can find all of the other stories in the series <a href="/series/trashing-macos-server">here</a>.
-</div>
+{{% box %}}
+This story is part of a series on migrating from macOS Server to Ubuntu Server.
+
+You can find all of the other stories in the series [here](/series/trashing-macos-server).
+{{% /box %}}
 
 ## Backstory
 
