@@ -56,12 +56,12 @@ chmod 660 /media/Shares/Public/server-backup-excludes
 
 We're almost ready to set up our `rsnapshot.conf` file. We know what we want to backup, and where we want the backups stored. The next thing we need to figure out is what the schedule and retention should look like. Here's what I decided to do:
 
-|Time Period|Backups to Retain|
-|-----------|-----------------|
-|Bihourly   |12               |
-|Daily      |7                |
-|Weekly     |4                |
-|Monthly    |3                |
+| Time Period | Backups to Retain |
+| ----------- | ----------------- |
+| Bihourly    | 12                |
+| Daily       | 7                 |
+| Weekly      | 4                 |
+| Monthly     | 3                 |
 
 What this means is that when a 13th bihourly backup is going to be made, existing ones are incremented first, and the last bihourly becomes the first daily backup. That ripples through all of the other time periods, too.
 
@@ -107,11 +107,11 @@ rsync_short_args  -aAX
 
 What do these args mean?
 
-|Arg |Description                                                                                                                                                                                                 |
-|----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`-a`|Archive mode. This expands to `-rlptgoD`. So: recursive, copy symlinks as symlinks, preserve permissions, preserve modification times, preserve group, preserve owner, and preserve device and special files|
-|`-A`|Preserve ACLs                                                                                                                                                                                               |
-|`-X`|Preserve extended attributes                                                                                                                                                                                |
+| Arg  | Description                                                                                                                                                                                                  |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `-a` | Archive mode. This expands to `-rlptgoD`. So: recursive, copy symlinks as symlinks, preserve permissions, preserve modification times, preserve group, preserve owner, and preserve device and special files |
+| `-A` | Preserve ACLs                                                                                                                                                                                                |
+| `-X` | Preserve extended attributes                                                                                                                                                                                 |
 
 I feel like these are pretty sane defaults, but you may want to look at [`man rsync`](https://linux.die.net/man/1/rsync) to see if there are other options you'd like to include. You can also find arguments you may want to include in `rsync_long_args` as well. I left that option commented in my `rsnapshot` config.
 
