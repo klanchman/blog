@@ -1,0 +1,21 @@
+{{- /* From https://www.bitquabit.com/post/json-feed-with-hugo/ */ -}}
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "{{ .Site.Title }}",
+  "home_page_url": {{ .Permalink | jsonify }},
+  "feed_url": {{ with .OutputFormats.Get "jsonfeed" -}}
+    {{- .Permalink | jsonify -}}
+  {{- end }},
+  "items": [
+    {{- range $index, $entry := first 10 site.RegularPages }}
+    {{- if $index }}, {{ end }}
+    {
+      "id": {{ .Permalink | jsonify }},
+      "url": {{ .Permalink | jsonify }},
+      "title": {{ .Title | jsonify }},
+      "date_published": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+      "content_html": {{ .Content | jsonify }}
+    }
+    {{- end }}
+  ]
+}

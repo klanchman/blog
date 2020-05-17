@@ -27,7 +27,6 @@ unsafe = true
   email = "blog@kylelanchman.com"
   github = "klanchman"
   twitter = "klanchman"
-  linkedin = "kylelanchman"
 
 [taxonomies]
   # category = "categories"
@@ -37,4 +36,34 @@ unsafe = true
 [[menu.main]]
   name = "Tags"
   url = "tags"
-  weight = 3
+  weight = 1
+
+[[menu.main]]
+  name = "Series"
+  url = "series"
+  weight = 2
+
+[[menu.main]]
+  name = "Feeds"
+  weight = 10
+
+[[menu.main]]
+  name = "JSON"
+  url = "feed.json"
+  weight = 11
+  parent = "Feeds"
+
+[[menu.main]]
+  name = "RSS"
+  url = "index.xml"
+  weight = 12
+  parent = "Feeds"
+
+[outputFormats.jsonfeed]
+  mediaType = "application/json"
+  baseName = "feed"
+  isPlainText = true
+  permalinkable = true
+
+[outputs]
+  home = ["html", "jsonfeed", "rss"]
