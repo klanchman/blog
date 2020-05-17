@@ -2,10 +2,15 @@
 {
   "version": "https://jsonfeed.org/version/1",
   "title": "{{ .Site.Title }}",
-  "home_page_url": {{ .Permalink | jsonify }},
+  "home_page_url": {{ .Site.BaseURL | jsonify }},
   "feed_url": {{ with .OutputFormats.Get "jsonfeed" -}}
     {{- .Permalink | jsonify -}}
   {{- end }},
+  "author": {
+    "name": "{{ .Site.Author.name }}",
+    "url": "{{ .Site.BaseURL }}",
+    "avatar": "{{ .Site.Params.logo | absURL }}"
+  },
   "items": [
     {{- range $index, $entry := first 10 site.RegularPages }}
     {{- if $index }}, {{ end }}
