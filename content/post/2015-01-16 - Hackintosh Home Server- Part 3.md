@@ -1,7 +1,7 @@
 +++
 title = "Hackintosh Home Server: Part 3"
 date = 2015-01-16T16:04:00Z
-tags = ["homelab", "apple", "tech"]
+tags = ["homelab", "apple"]
 series = "Hackintosh Home Server"
 +++
 

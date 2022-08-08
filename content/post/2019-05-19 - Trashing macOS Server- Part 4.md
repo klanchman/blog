@@ -1,7 +1,7 @@
 +++
 title = "Trashing macOS Server: Part 4 - Server Backups"
 date = 2019-05-19T15:23:00-04:00
-tags = ["homelab", "apple", "tech"]
+tags = ["homelab", "apple"]
 series = "Trashing macOS Server"
 +++
 

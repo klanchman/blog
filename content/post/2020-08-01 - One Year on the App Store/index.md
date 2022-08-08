@@ -1,7 +1,7 @@
 +++
 title = "One Year on the App Store"
 date = 2020-08-01T17:43:00-04:00
-tags = ["programming", "ryuusei", "tech", "weeb"]
+tags = ["programming", "ryuusei", "weeb"]
 +++
 
 About a year ago I released [Ryuusei](https://ryuusei.moe) on the App Store. Ryuusei is one of the first side projects I started, certainly the side project I've put the most time and effort into, and the first app I've put on the App Store on my personal developer account. All told, it's a Pretty Big Deal™ for me! It was a huge moment when I hit the button to release it to the world.

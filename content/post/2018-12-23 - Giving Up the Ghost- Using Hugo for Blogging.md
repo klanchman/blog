@@ -1,7 +1,7 @@
 +++
 title = "Giving Up the Ghost: Using Hugo for Blogging"
 date = 2018-12-23T15:43:00-05:00
-tags = ["meta", "tech"]
+tags = ["meta"]
 +++
 
 Earlier this year, [I started using Ghost for my blog](/using-ghost-for-blogging). After a few months, I've decided to make another change in platform, this time to Hugo.

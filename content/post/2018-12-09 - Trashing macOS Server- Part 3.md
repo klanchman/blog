@@ -1,7 +1,7 @@
 +++
 title = "Trashing macOS Server: Part 3 - Plex, Transmission, and Flexget"
 date = 2018-12-09T15:09:00-05:00
-tags = ["homelab", "apple", "tech"]
+tags = ["homelab", "apple"]
 series = "Trashing macOS Server"
 +++
 

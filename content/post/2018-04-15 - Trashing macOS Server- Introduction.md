@@ -1,7 +1,7 @@
 +++
 title = "Trashing macOS Server: Introduction"
 date = 2018-04-15T15:00:00-05:00
-tags = ["homelab", "apple", "tech"]
+tags = ["homelab", "apple"]
 series = "Trashing macOS Server"
 image = "/img/post-images/trashing-macos-server.png"
 +++

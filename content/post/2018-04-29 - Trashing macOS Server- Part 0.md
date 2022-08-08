@@ -1,7 +1,7 @@
 +++
 title = "Trashing macOS Server: Part 0 - Setup"
 date = 2018-04-29T12:45:00-05:00
-tags = ["homelab", "apple", "tech"]
+tags = ["homelab", "apple"]
 series = "Trashing macOS Server"
 +++
 

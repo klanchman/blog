@@ -1,7 +1,7 @@
 +++
 title = "Trashing macOS Server: Extra 1 - Revisiting Time Machine"
 date = 2019-12-23T11:49:00-05:00
-tags = ["homelab", "apple", "tech"]
+tags = ["homelab", "apple"]
 series = "Trashing macOS Server"
 +++
 
