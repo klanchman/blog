@@ -178,6 +178,7 @@ To configure the UIPasteControl's appearance in code, use the `UIPasteControl(co
 
 To add a no-prompt paste button in a `UIMenu`, check out [this post by Will Bishop](https://blog.willbish.com/2022/08/02/using-uipastecontrol-in-a-uimenu-in-ios-16/). It turns out that you don't need `UIPasteControl` for this scenario!
 
-If you want to put a paste control in SwiftUI, this post hopefully gave you a general starting point. You'll need to make a `UIViewRepresentable` version of UIPasteControl, and since you won't have a view controller in the mix you'll need to [make a `Coordinator`](https://developer.apple.com/documentation/swiftui/uiviewrepresentable/makecoordinator()-9e4i4) object that conforms to `UIPasteConfigurationSupporting`, and set the UIPasteControl's `target` to be the Coordinator.
+~~If you want to put a paste control in SwiftUI, this post hopefully gave you a general starting point. You'll need to make a `UIViewRepresentable` version of UIPasteControl, and since you won't have a view controller in the mix you'll need to [make a `Coordinator`](https://developer.apple.com/documentation/swiftui/uiviewrepresentable/makecoordinator()-9e4i4) object that conforms to `UIPasteConfigurationSupporting`, and set the UIPasteControl's `target` to be the Coordinator.~~
+**Update 2022-08-12:** Somehow I missed that SwiftUI has a [`PasteButton`](https://developer.apple.com/documentation/swiftui/pastebutton/) view. If you need a paste control in SwiftUI, use that! 😄
 
 Again, you can find a simple example project [on GitHub](https://github.com/klanchman/UIPasteControlExample). Happy pasting!
