@@ -3,12 +3,9 @@ languageCode = "en-us"
 title = "Kyle Lanchman"
 theme = "beautifulhugo"
 
-pygmentsCodeFences = true
-pygmentsCodeFencesGuessSyntax = true
-pygmentsStyle = "solarized-light"
-
-[markup.goldmark.renderer]
-unsafe = true
+[markup]
+  [markup.highlight]
+    noclasses = false
 
 [permalinks]
   post = "/:title"
