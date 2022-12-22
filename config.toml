@@ -6,6 +6,9 @@ theme = "beautifulhugo"
 [markup]
   [markup.highlight]
     noclasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [permalinks]
   post = "/:title"
