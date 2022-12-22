@@ -27,6 +27,7 @@ theme = "beautifulhugo"
   email = "blog@kylelanchman.com"
   github = "klanchman"
   twitter = "klanchman"
+  mastodon = "mstdn.io/@klanchman"
 
 [taxonomies]
   # category = "categories"
