@@ -25,7 +25,7 @@ After reading around for a little while, I decided on [rsnapshot](https://rsnaps
 
 Installation goes just like you'd expect:
 
-```
+```sh
 sudo apt install rsnapshot
 ```
 
@@ -41,13 +41,13 @@ To deal with exclusions, first make a file in a directory higher up, in my case 
 
 `sudo EDITOR /media/Shares/Public/server-backup-excludes`
 
-```
+```text
 Public/0 Server Torrents
 ```
 
 Follow that up with some permissions changes:
 
-```
+```sh
 chown server:shares-access /media/Shares/Public/server-backup-excludes
 chmod 660 /media/Shares/Public/server-backup-excludes
 ```
@@ -79,20 +79,20 @@ We want to change a few things in here. I'll start from the top.
 
 First, set the directory where you want backups to live:
 
-```
+```text
 snapshot_root  /media/LocalBackup
 ```
 
 Check your system just to be sure, but I also had to uncomment a couple of lines:
 
-```
+```text
 cmd_du  /usr/bin/du
 cmd_rsnapshot_diff  /usr/bin/rsnapshot-diff
 ```
 
 Next, set up your naming and retention. Here's how mine looks:
 
-```
+```text
 retain  hourly  12
 retain  daily   7
 retain  weekly  4
@@ -101,7 +101,7 @@ retain  monthly 3
 
 Then, set up your `rsync` short args list. Here's mine:
 
-```
+```text
 rsync_short_args  -aAX
 ```
 
@@ -117,13 +117,13 @@ I feel like these are pretty sane defaults, but you may want to look at [`man rs
 
 Next, set up your exclude file, if you have one:
 
-```
+```text
 exclude_file  /media/Shares/Public/server-backup-excludes
 ```
 
 Last, configure what files you're backing up. Here are the items that I have:
 
-```
+```text
 backup  /media/Shares  localhost/
 backup  /etc/  localhost/
 ```
@@ -132,7 +132,7 @@ There are a lot of other options available, so browse through the file to see if
 
 Now, test your config:
 
-```
+```sh
 # Check syntax
 sudo rsnapshot configtest
 
@@ -151,7 +151,7 @@ First, we'll need a root service that all the scheduled jobs will call.
 
 `sudo EDITOR /lib/systemd/system/rsnapshot@.service`
 
-```
+```ini
 [Unit]
 Description=rsnapshot (%I) backup
 
@@ -167,7 +167,7 @@ Next are all my scheduled jobs. You will likely want to tweak the `OnCalendar`[^
 
 `sudo EDITOR /lib/systemd/system/rsnapshot-monthly.timer`
 
-```
+```ini
 [Unit]
 Description=rsnapshot monthly backup
 
@@ -183,7 +183,7 @@ WantedBy=timers.target
 
 `sudo EDITOR /lib/systemd/system/rsnapshot-weekly.timer`
 
-```
+```ini
 [Unit]
 Description=rsnapshot weekly backup
 
@@ -199,7 +199,7 @@ WantedBy=timers.target
 
 `sudo EDITOR /lib/systemd/system/rsnapshot-daily.timer`
 
-```
+```ini
 [Unit]
 Description=rsnapshot daily backup
 
@@ -215,7 +215,7 @@ WantedBy=timers.target
 
 `sudo EDITOR /lib/systemd/system/rsnapshot-bihourly.timer`
 
-```
+```ini
 [Unit]
 Description=rsnapshot bihourly backup
 
@@ -235,7 +235,7 @@ Don't enable these jobs yet! There's one more thing to do.
 
 Before we schedule our jobs, we need to take an initial backup. This may take a little while, so I recommend starting this in a `tmux` session and detaching it so you can disconnect from the server while it goes.
 
-```
+```sh
 # Start a backup for your first level, `bihourly` in my case
 sudo systemctl start rsnapshot@bihourly
 ```
@@ -244,7 +244,7 @@ sudo systemctl start rsnapshot@bihourly
 
 Once your initial backup is complete, all that's left is to start and enable the systemd timers we made above.
 
-```
+```sh
 sudo systemctl enable rsnapshot-bihourly.timer rsnapshot-daily.timer rsnapshot-weekly.timer rsnapshot-monthly.timer
 sudo systemctl start rsnapshot-bihourly.timer rsnapshot-daily.timer rsnapshot-weekly.timer rsnapshot-monthly.timer
 ```
@@ -253,7 +253,7 @@ sudo systemctl start rsnapshot-bihourly.timer rsnapshot-daily.timer rsnapshot-we
 
 At this point, you should have a "set and forget" backup solution for local files on your server. It's pretty space-efficient, thanks to the use of hard links. Here's how my disk usage looks for Shares and LocalBackup:
 
-```
+```text
 Filesystem                               Size  Used Avail Use% Mounted on
 /dev/mapper/Shares--vg-Shares            3.6T  2.4T  1.1T  70% /media/Shares
 /dev/mapper/LocalBackup--vg-LocalBackup  3.6T  2.5T  955G  73% /media/LocalBackup

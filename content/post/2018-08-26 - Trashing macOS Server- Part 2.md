@@ -24,12 +24,12 @@ It's also worth noting that Apple supports Time Machine over SMB, and Samba 4.8 
 We'll need to compile Netatalk from source. I had originally hoped to do this on another machine and move the built version onto the server, but it didn't work out for whatever reason (it's been a while, so I don't remember what went wrong). You can try doing that if you'd like, but this guide will just have you compile directly on the server.
 
 First, you'll need to install some dependencies:
-```
+```sh
 sudo apt install build-essential devscripts debhelper cdbs autotools-dev dh-buildinfo libdb-dev libwrap0-dev libpam0g-dev libcups2-dev libkrb5-dev libltdl3-dev libgcrypt11-dev libcrack2-dev libavahi-client-dev libldap2-dev libacl1-dev libevent-dev d-shlibs dh-systemd
 ```
 
 After that, you can clone the source code and build it:
-```
+```sh
 mkdir -p ~/work/netatalk-debian
 cd ~/work/netatalk-debian
 git clone https://github.com/adiknoth/netatalk-debian
@@ -38,7 +38,7 @@ debuild -b -uc -us
 ```
 
 At this point, you should have some new debs in the directory above that you can install:
-```
+```sh
 cd ..
 
 # substitute <whatever> for the version of Netatalk you built
@@ -47,14 +47,14 @@ sudo dpkg -i netatalk<whatever>.deb
 ```
 
 Now let's check if everything got installed right:
-```
+```sh
 netatalk -V
 afpd -V
 ```
 
 You should see some basic information from these commands about what features are supported, etc. This guide assumes you already have Avahi installed from the previous post about Samba. If that's not the case, you might need to install a few more packages:
 
-```
+```sh
 sudo apt install avahi-daemon libc6-dev libnss-mdns
 ```
 
@@ -62,7 +62,7 @@ sudo apt install avahi-daemon libc6-dev libnss-mdns
 
 To configure Netatalk, you'll want to sort out where to _put_ the Time Machine backups first. On my machine, that looked something like this:
 
-```
+```sh
 sudo mkdir /media/NetworkBackup
 sudo chown server:shares-access /media/NetworkBackup
 sudo chmod 770 /media/NetworkBackup
@@ -70,7 +70,7 @@ sudo chmod 770 /media/NetworkBackup
 
 Next, go edit the Netatalk config file.
 `sudo EDITOR /etc/netatalk/afp.conf`
-```
+```ini
 ## Comment out [homes] stuff! ##
 
 [Backups]
@@ -85,7 +85,7 @@ You'll notice I used allowed my `shares-access` group to connect to the Time Mac
 
 After that, you'll need to create a new application config for UFW.
 `sudo EDITOR /etc/ufw/applications.d/netatalk`
-```
+```ini
 [netatalk]
 title=netatalk
 description=AFP server
@@ -93,7 +93,7 @@ ports=548/tcp
 ```
 
 Then you can allow it through the firewall:
-```
+```sh
 sudo ufw allow netatalk
 ```
 
@@ -118,7 +118,7 @@ Lastly you'll want to set up Avahi so that your clients know about the server.
 
 After that, we just need to restart Avahi and fire up Netatalk!
 
-```
+```sh
 sudo systemctl restart avahi-daemon
 sudo systemctl enable netatalk
 sudo systemctl start netatalk
@@ -130,7 +130,7 @@ If all went well, you should be able to open Time Machine preferences on your Ma
 
 If you can't connect to your server, you might need to tell Time Machine to allow using "unsupported" volumes like so:
 
-```
+```sh
 defaults write com.apple.systempreferences TMShowUnsupportedNetworkVolumes 1
 ```
 

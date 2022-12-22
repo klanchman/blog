@@ -29,7 +29,7 @@ When all of this was happening, Ubuntu 18.10 was available, and it had Samba 4.8
 
 `sudo EDITOR /etc/samba/smb.conf`
 
-```
+```ini
 [Backups]
   comment = Time Machine Backups
   path = /media/NetworkBackup/Time Machine
