@@ -78,7 +78,7 @@ class ViewController: UIViewController {
 If we run the app now and **have a supported item on the pasteboard**, the paste control is enabled! 🎉
 
 But if we press it, our app crashes! 💥
-```
+```text
 *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'pasteItemProviders: must be overridden if pasteConfiguration is not nil.'
 ```
 

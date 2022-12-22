@@ -25,13 +25,13 @@ This post will be a bit vague in some areas. My assumption is that if you're rea
 
 Setting up Plex on Ubuntu is pretty painless. First, download the latest version. You can find the latest download link on [Plex's website](https://www.plex.tv/media-server-downloads/#plex-media-server).
 
-```
+```sh
 curl -L -o plexmediaserver_<version>_amd64.deb https://downloads.plex.tv/plex-media-server/<version>/plexmediaserver_<version>_amd64.deb
 ```
 
 Then install it with `dpkg`:
 
-```
+```sh
 sudo dpkg -i plexmediaserver_<version>_amd64.deb
 ```
 
@@ -39,7 +39,7 @@ After that, we need to set up some firewall rules:
 
 `sudo EDITOR /etc/ufw/applications.d/plexmediaserver`
 
-```
+```ini
 # Config assumes Avahi is enabled already on 5353/udp, otherwise add it here
 # Config omits some features I don't use
 # See full list here: https://support.plex.tv/articles/201543147-what-network-ports-do-i-need-to-allow-through-my-firewall/
@@ -52,7 +52,7 @@ ports=32400/tcp|1900/udp|32410/udp|32412:32414/udp|32469/tcp
 
 Last, we need to set up some ACLs for where the media is stored. In my case, I have an SMB share called `Plex Media`.
 
-```
+```sh
 cd /media/Shares
 # Set default ACL for new items, and apply that ACL. (The ACL will allow the `plex` user to read Plex Media directory and traverse all sub directories, but not execute files inside of it unless they are marked executable for some other user)
 setfacl -Rdm user:plex:rX Plex\ Media/
@@ -79,7 +79,7 @@ At this point, you should have your old library set up on your new server!
 
 Install the headless Transmission daemon:
 
-```
+```sh
 sudo apt install transmission-daemon
 ```
 
@@ -91,7 +91,7 @@ This config assumes you're using port `9091` for the web UI. Replace `<peer_port
 
 `sudo EDITOR /etc/ufw/applications.d/transmission`
 
-```
+```ini
 [transmission]
 title=Transmission
 description=Transmission torrent daemon
@@ -100,7 +100,7 @@ ports=9091/tcp|<peer_port>
 
 And then of course:
 
-```
+```sh
 sudo ufw allow transmission
 ```
 
@@ -108,7 +108,7 @@ Guess what else? Permissions!
 
 I save my downloads in my `Public` share under the directory `0 Server Torrents` (I like it at the top of the directory when sorted alphabetically).
 
-```
+```sh
 cd /media/Shares
 chmod g+s Public
 setfacl -Rdm o::--- Public/
@@ -121,7 +121,7 @@ setfacl -Rm user:debian-transmission:rwX 0\ Server\ Torrents
 
 From there, you'll probably want to edit Transmission's configuration:
 
-```
+```sh
 sudo systemctl stop transmission-daemon
 sudo EDITOR /etc/transmission-daemon/settings.json
 # Do your thing
@@ -137,7 +137,7 @@ First, set up a systemd service. This service will look for torrents that are 10
 
 `sudo EDITOR /lib/systemd/system/transmission-cleanup.service`
 
-```
+```ini
 [Unit]
 Description=Clean up finished torrents in Transmission
 
@@ -153,7 +153,7 @@ Then set up a timer to run that service. Mine runs every hour.
 
 `sudo EDITOR /lib/systemd/system/transmission-cleanup-hourly.timer`
 
-```
+```ini
 [Unit]
 Description=Clean up finished torrents in Transmission every hour
 After=network.target
@@ -169,7 +169,7 @@ WantedBy=multi-user.target
 
 Lastly, start the timer!
 
-```
+```sh
 sudo systemctl daemon-reload
 sudo systemctl enable transmission-cleanup.service transmission-cleanup-hourly.timer
 sudo systemctl start transmission-cleanup-hourly.timer
@@ -185,14 +185,14 @@ I'm not hugely familiar with the "right way" to do things in Python, so this may
 
 First, some initial work. We need `pip` for Python 3, and we need a user to run flexget:
 
-```
+```sh
 sudo apt install python3-pip
 sudo adduser srv-flexget
 ```
 
 After that...permissions! I have a `flexget` directory in my `Public` share for flexget's config, and then `flexget` needs to be able to read where torrents end up.
 
-```
+```sh
 cd /media/Shares
 setfacl -m user:srv-flexget:rx Public/
 
@@ -207,7 +207,7 @@ setfacl -Rm user:srv-flexget:rx 0\ Server\ Torrents/
 
 Then it's time to install flexget, which we will do as the `srv-flexget` user:
 
-```
+```sh
 su -l srv-flexget
 cd
 
@@ -236,7 +236,7 @@ First, we need a service that will run flexget:
 
 `sudo EDITOR /lib/systemd/system/flexget.service`
 
-```
+```ini
 [Unit]
 Description=Flexget
 
@@ -254,7 +254,7 @@ Then make a timer. I have mine run every 15 minutes.
 
 `sudo vim /lib/systemd/system/flexget.timer`
 
-```
+```ini
 [Unit]
 Description=Run Flexget every 15 minutes
 After=network.target
@@ -272,7 +272,7 @@ WantedBy=multi-user.target
 
 After that, enable and start things:
 
-```
+```sh
 # This isn't required, but it gets log messages into journalctl. It will make the .service run at boot, so do not combine with OnBootSec in the .timer
 sudo systemctl enable flexget
 

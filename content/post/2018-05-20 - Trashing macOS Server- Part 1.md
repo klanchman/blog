@@ -21,14 +21,14 @@ I have never had much luck with Samba. I could never get it working quite how I 
 
 First things first, we need to install Samba:
 
-```
+```sh
 sudo apt install samba
 sudo ufw allow in "Samba"
 ```
 
 After that, it might be a good time to set up all the folders you plan to have shared. In my instance, I created a `/media/Shares` directory to hold all of my shared folders. I also created a group to easily manage users who can read & write to the shares. For the sake of this next code block, `server` is the main user on the machine, `shares-access` is a group that will have read/write permissions for shared folders, and `klanchman` is a member of `shares-access`. These commands should be adjusted to match your system and desired username for connecting to shared folders.
 
-```
+```sh
 sudo adduser klanchman
 sudo smbpasswd -a klanchman
 sudo addgroup shares-access
@@ -58,7 +58,7 @@ Now it's time to configure Samba itself. This is the part that caused the most h
 It's important to point out that I am accessing shared folders _exclusively_ with macOS clients. I think Linux clients should behave fine too, but if you also want to use Windows clients you may need to tweak some of this configuration.
 
 First `sudo EDITOR /etc/samba/smb.conf`, replacing `EDITOR` with your favorite editor. Near the top, set the following if it's not already there:
-```
+```ini
 [global]
 security = user
 ```
@@ -67,7 +67,7 @@ Then, comment printer-related stuff (assuming you don't plan to share printers).
 
 Then come the shares. I'll dump the config first, then explain in the next section a couple of things that are here, and _why_ they're here.
 
-```
+```ini
 ### My Shares ###
 # Global options
 guest ok = no
@@ -110,7 +110,7 @@ acl map full control = no
 ```
 
 Save the file, and then restart Samba:
-```
+```sh
 sudo systemctl restart smbd.service nmbd.service
 ```
 
@@ -125,27 +125,29 @@ So what is all of this doing? Let's look a little closer...
 It's important to note that everything up to `[Public]` applies to all shares. This config makes some assumptions about how you want to use your file server, such as limiting who has access to the shares.
 
 This block does most of the heavy lifting in preventing permissions issues:
-```
+```ini
 create mask = 0660
 directory mask = 0770
 map archive = no
 map hidden = no
 map system = no
 ```
+
 This says files should be created with `0660` permissions (i.e. `-rw-rw----`), and directories `0770`. A point of interest is the `map xxxx = no` directives. If these were set to `yes`, Samba would map the Windows archive/hidden/system bits to the execute bits on the Linux side. For instance, if you had a file with the archive bit enabled, the permissions on the Linux side would become `0760`. But that also means that macOS will see them that way, which isn't what we want!
 
 The next block of config that helps with permissions issues says this:
-```
+```ini
 inherit acls = yes
 inherit permissions = yes
 acl group control = yes
 nt acl support = yes
 acl map full control = no
 ```
+
 Ultimately this will allow ACLs set on the Linux side to be respected by Samba. I use ACLs to some extent (I'll explain more in upcoming posts), so I wanted to make sure they worked properly in shared folders.
 
 Last, the block that does some Apple-specific stuff:
-```
+```ini
 ea support = yes
 vfs objects = fruit streams_xattr
 fruit:aapl = yes
@@ -154,6 +156,7 @@ fruit:resource = file
 # Prevent macOS from assigning its own permissions
 fruit:nfs_aces = no
 ```
+
 The first line is easy, it enables extended attribute support. But what is all this `fruit` stuff? I'm glad you asked! The Samba doc for it is [here](https://www.samba.org/samba/docs/current/man-html/vfs_fruit.8.html). Basically it enabled enhanced support for Apple clients. So, a quick breakdown:
 - `vfs objects` essentially loads the module
 - `fruit:appl = yes` turns it on the extension
@@ -171,14 +174,14 @@ We're almost done! We've got a slick new Samba server set up, but nothing on the
 
 Getting it set up is pretty easy:
 
-```
+```sh
 sudo apt install avahi-daemon
 ```
 
 Now we need to create a UFW rule.
 
 `sudo EDITOR /etc/ufw/applications.d/avahi`
-```
+```ini
 [Avahi]
 title=Avahi
 description=Avahi Zeroconf
@@ -206,11 +209,12 @@ Now we need to set up a service for Avahi to broadcast.
  </service>
 </service-group>
 ```
+
 This tells Avahi we have a service running on port 445 called `_smb._tcp`. You may also notice `<txt-record>model=RackMac</txt-record>`. This tells Mac clients what to show as the icon for the server in Finder. I went with `RackMac`, which looks like an Xserve server. You can find other names by looking through `/System/Library/CoreServices/CoreTypes.bundle/Contents/Info.plist` on your Mac.
 
 Lastly we just need to start Avahi:
 
-```
+```sh
 sudo systemctl enable avahi-daemon
 sudo systemctl start avahi-daemon
 ```

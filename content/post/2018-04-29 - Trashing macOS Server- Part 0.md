@@ -57,7 +57,7 @@ My configuration with vSphere made use of local RDM disks, but that doesn't real
 
 Here's how my LVM setup looked in the end:
 
-```
+```shell-session
 $ sudo pvs
   PV         VG               Fmt  Attr PSize  PFree
   /dev/sda3  Kestrel-vg       lvm2 a--  24.02g    0
