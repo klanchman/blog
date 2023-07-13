@@ -1,8 +1,8 @@
----
-title: "Brilliant, Terrible Hacks in Dual Booting an Old Netbook"
-date: 2023-03-27T00:45:00-04:00
-externalURL: "https://cohost.org/cathoderaydude/post/1228730-taking-the-deepest-p"
----
++++
+title = "Brilliant, Terrible Hacks in Dual Booting an Old Netbook"
+date = 2023-03-27T00:45:00-04:00
+externalURL = "https://cohost.org/cathoderaydude/post/1228730-taking-the-deepest-p"
++++
 
 [CathodeRayDude](https://cohost.org/cathoderaydude/post/1228730-taking-the-deepest-p) (via [J. B. Crawford](https://cohost.org/jbcrawford/post/1234140-work-docs)):
 
