@@ -4,15 +4,15 @@ date = 2023-07-13T00:38:00-04:00
 tags = ["programming", "swiftui"]
 +++
 
-Jesse Squires recently [asked on Mastodon](https://mastodon.social/@jsq/110690642657239551) whether SwiftUI still lacked support for dynamic colors. Ultimately he [shared a solution](https://www.jessesquires.com/blog/2023/07/11/creating-dynamic-colors-in-swiftui/) that uses `UIColor` / `NSColor` under the hood to achieve the desired effect. There are other solutions floating around like [one from John Sundell](https://swiftbysundell.com/articles/defining-dynamic-colors-in-swift/) that work in a similar way.
+Jesse Squires recently [asked on Mastodon](https://mastodon.social/@jsq/110690642657239551) whether SwiftUI still lacked support for dynamic colors. Ultimately he [shared a solution](https://www.jessesquires.com/blog/2023/07/11/creating-dynamic-colors-in-swiftui/) that uses `UIColor` / `NSColor` under the hood to achieve the desired effect. There are other solutions floating around that work in a similar way, like [one from John Sundell](https://swiftbysundell.com/articles/defining-dynamic-colors-in-swift/).
 
-We'll need to keep doing that as long as we need to support iOS 16, but with iOS 17 and aligned releases SwiftUI finally has a built-in answer for this: [custom `ShapeStyle`s](https://developer.apple.com/documentation/swiftui/shapestyle).
+We'll need to keep doing that as long as we need to support iOS 16 and earlier, but with iOS 17 and aligned releases SwiftUI finally has a built-in answer for this: [custom `ShapeStyle`s](https://developer.apple.com/documentation/swiftui/shapestyle).
 
 I'll start with a quick question that may be on your mind: what do shapes have to do with colors?
 
 ## `foregroundColor(_:)` is Deprecated
 
-In case you missed it, iOS 17 et al. have deprecated the [`foregroundColor(_:)`](https://developer.apple.com/documentation/swiftui/view/foregroundcolor(_:)/) modifier. Instead, Apple says to use [`foregroundStyle(_:)`](https://developer.apple.com/documentation/swiftui/view/foregroundstyle(_:)). You'll note that `foregroundStyle(_:)` takes a `ShapeStyle`, same as [`background(_:ignoresSafeAreaEdges:)`](https://developer.apple.com/documentation/swiftui/view/background(_:ignoressafeareaedges:)).
+In case you missed it, iOS 17 et al. have deprecated the [`foregroundColor(_:)`](https://developer.apple.com/documentation/swiftui/view/foregroundcolor(_:)/) modifier. Instead, Apple says to use [`foregroundStyle(_:)`](https://developer.apple.com/documentation/swiftui/view/foregroundstyle(_:)). You'll note that `foregroundStyle(_:)` takes a `ShapeStyle`, same as [`background(_:ignoresSafeAreaEdges:)`](https://developer.apple.com/documentation/swiftui/view/background(_:ignoressafeareaedges:)) which you're probably already using extensively.
 
 As it so happens, `Color` conforms to `ShapeStyle`. So in many cases you'll be able to replace usages of `foregroundColor(_:)` with `foregroundStyle(_:)` without changing what you're passing.
 
@@ -28,7 +28,7 @@ Now it starts:
 
 It goes on to show an example of changing a color's blend mode based on the environment's color scheme.
 
-But we can also use this to switch to an entirely different color! Here's an example of a ShapeStyle that resolves to a color that's based on the current color scheme:
+But we can also use this to switch to an entirely different color! Here's an example of a `ShapeStyle` that resolves to a color that's based on the current color scheme:
 
 ```swift
 struct DynamicColorShapeStyle: ShapeStyle {
